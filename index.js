@@ -12,7 +12,7 @@ const removeBook = function () {
     (book) => book.title !== title && book.author !== author
   );
 
-  displayBooks(); // eslint-disable-line no-use-before-define
+  displayBooks();
   localStorage.setItem("bookCollection", JSON.stringify(bookCollection));
 };
 
