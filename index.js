@@ -1,36 +1,36 @@
-let bookCollection = localStorage.getItem("bookCollection")
-  ? JSON.parse(localStorage.getItem("bookCollection"))
+let bookCollection = localStorage.getItem('bookCollection')
+  ? JSON.parse(localStorage.getItem('bookCollection'))
   : [];
-const title = document.querySelector("#title-input");
-const author = document.querySelector("#author-input");
-const bookContainer = document.querySelector(".books-container");
+const title = document.querySelector('#title-input');
+const author = document.querySelector('#author-input');
+const bookContainer = document.querySelector('.books-container');
 
 const removeBook = function () {
-  const title = this.id.split("-")[0];
-  const author = this.id.split("-")[1];
+  const title = this.id.split('-')[0];
+  const author = this.id.split('-')[1];
   bookCollection = bookCollection.filter(
-    (book) => book.title !== title && book.author !== author
+    (book) => book.title !== title && book.author !== author,
   );
 
-  displayBooks();
-  localStorage.setItem("bookCollection", JSON.stringify(bookCollection));
+  displayBooks(); // eslint-disable-line no-use-before-define
+  localStorage.setItem('bookCollection', JSON.stringify(bookCollection));
 };
 
 function displayBooks() {
-  bookContainer.innerHTML = "";
+  bookContainer.innerHTML = '';
   bookCollection.forEach((book) => {
     bookContainer.insertAdjacentHTML(
-      "beforeend",
+      'beforeend',
       `<div>
    <p>${book.title}</p>
    <p>${book.author}</p>
     <button class="remove" type="button" id="${book.title}-${book.author}">Remove</button>
     <hr>
-    </div>`
+    </div>`,
     );
   });
-  document.querySelectorAll(".remove").forEach((removeBtn) => {
-    removeBtn.addEventListener("click", removeBook);
+  document.querySelectorAll('.remove').forEach((removeBtn) => {
+    removeBtn.addEventListener('click', removeBook);
   });
 }
 
@@ -41,13 +41,13 @@ const addBook = function () {
       author: author.value,
     };
     bookCollection.push(bookObject);
-    title.value = "";
-    author.value = "";
+    title.value = '';
+    author.value = '';
     displayBooks();
-    localStorage.setItem("bookCollection", JSON.stringify(bookCollection));
+    localStorage.setItem('bookCollection', JSON.stringify(bookCollection));
   }
 };
 
-const addButton = document.querySelector(".add-button");
-addButton.addEventListener("click", addBook);
+const addButton = document.querySelector('.add-button');
+addButton.addEventListener('click', addBook);
 displayBooks();
