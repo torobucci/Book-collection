@@ -4,20 +4,28 @@ body {
   align-items: center;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
-a:hover{
+
+a:hover {
   cursor: pointer;
 
 }
-a:active{
+
+a:visited {
+  color: purple;
+}
+
+a:active {
   color: blue;
 }
-ul{
+
+ul {
   list-style-type: none;
 }
+
 input {
   width: 80%;
   border: 2px solid black;
@@ -70,26 +78,31 @@ p {
   border-radius: 2px;
   width: 100%;
 }
-nav{
+
+nav {
   display: flex;
   border: 3px solid black;
-  padding:0 10px;
+  padding: 0 10px;
   height: 2.5rem;
   justify-content: space-between;
   align-items: center;
   width: 90vw;
 }
-.nav-ul{
+
+.nav-ul {
   display: flex;
 }
-.nav-ul li{
-  border-right:1px solid black ;
+
+.nav-ul li {
+  border-right: 1px solid black;
   padding: 2px 6px;
 }
-.nav-ul li:last-child{
+
+.nav-ul li:last-child {
   border: none;
 }
-footer{
+
+footer {
   border: 3px solid black;
   width: 90vw;
   padding-left: 3rem;
@@ -97,4 +110,3 @@ footer{
   display: flex;
   align-items: center;
 }
-
