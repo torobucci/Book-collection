@@ -1,72 +1,66 @@
-const title = document.querySelector('#title-input');
-const author = document.querySelector('#author-input');
-const bookContainer = document.querySelector('.books-container');
+const bookContainer = document.querySelector(".books-container");
 
-class BookCollectionClass {
+class BookCollection {
   constructor(bookArray) {
     this.bookArray = bookArray;
   }
-
-  addBook() {
-    if (title.value && author.value) {
-      this.bookArray.push(new Book(title.value, author.value));
-      this.bookArray[0].displayBooks();
-      localStorage.setItem(
-        'bookCollectionArray',
-        JSON.stringify(this.bookArray),
-      );
-    }
-  }
-
-  removeBook(bk) {
-    this.bookArray.splice(bk, 1);
-    localStorage.setItem('bookCollectionArray', JSON.stringify(this.bookArray));
-  }
-}
-const bookCollection = new BookCollectionClass([]);
-if (localStorage.getItem('bookCollectionArray')) {
-  JSON.parse(localStorage.getItem('bookCollectionArray')).forEach((book) => bookCollection.bookArray.push(new Book(book.title, book.author)));
-}
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-
-  displayBooks() {
-    bookContainer.innerHTML = '';
-    bookCollection.bookArray.forEach((book) => {
-      bookContainer.insertAdjacentHTML(
-        'beforeend',
-        `<div class="book-details">
-   <p>"${book.title}" by ${book.author}</p> 
-    <button class="remove" type="button">Remove</button>
-  
-    </div>`,
-      );
+  removeBook(book) {
+    this.bookArray.splice(book, 1);
+    localStorage.setItem(
+      "bookCollectionArray",
+      JSON.stringify(bookCollection.bookArray)
+    );
+    this.bookArray.forEach((book, i) => {
+      book.id = i;
     });
-    if (bookCollection.bookArray[0]) {
-      bookContainer.style.border = '3px solid black';
-    } else {
-      bookContainer.style.border = 'none';
-    }
-    title.value = '';
-    author.value = '';
-    const removeBtns = document.querySelectorAll('.remove');
-    removeBtns.forEach((removeBtn, i) => {
-      removeBtn.addEventListener('click', () => {
-        bookCollection.removeBook(i);
-        this.displayBooks();
+    bookContainer.innerHTML = "";
+    this.bookArray.forEach((book) => book.displayBook());
+    document
+      .querySelector(`#remove-${book.id}`)
+      ?.addEventListener(`click`, this.removeBook.bind(this, book));
+  }
+
+  addBook(title, author) {
+    this.bookArray.push({
+      title: title,
+      author: author,
+      id: this.bookArray.length,
+
+      displayBook: function () {
+        bookContainer.insertAdjacentHTML(
+          "beforeend",
+          `<div class="book-details" id="book-${this.id}">
+              <p>"${this.title}" by ${this.author}</p> 
+              <button class="remove" type="button" id="remove-${this.id}">Remove</button>
+            </div>`
+        );
+      },
+    });
+    localStorage.setItem(
+      "bookCollectionArray",
+      JSON.stringify(bookCollection.bookArray)
+    );
+
+    this.bookArray[this.bookArray.length - 1].displayBook();
+    document
+      .querySelector(`#remove-${this.bookArray[this.bookArray.length - 1].id}`)
+      .addEventListener("click", () => {
+        this.removeBook(this.bookArray[this.bookArray.length - 1]);
       });
-    });
   }
 }
-const addButton = document.querySelector('.add-button');
-addButton.addEventListener('click', () => {
-  bookCollection.addBook;
-});
-console.log(bookCollection.bookArray[0])
-if(bookCollection.bookArray[0]){
-  bookCollection.bookArray[0].displayBooks();
-}
 
+const bookCollection = localStorage.getItem("bookCollectionArray")
+  ? new BookCollection(JSON.parse(localStorage.getItem("bookCollectionArray")))
+  : new BookCollection([]);
+
+const addButton = document.querySelector(".add-button");
+const titleInput = document.querySelector("#title-input");
+const authorInput = document.querySelector("#author-input");
+addButton.addEventListener("click", () => {
+  if (titleInput.value && authorInput.value) {
+    bookCollection.addBook(titleInput.value, authorInput.value);
+    titleInput.value = "";
+    authorInput.value = "";
+  }
+});
