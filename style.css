@@ -1,9 +1,10 @@
-body{
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-input{
+
+input {
   width: 80%;
   border: 2px solid black;
   background-color: white;
@@ -13,39 +14,45 @@ input{
   margin-bottom: 20px;
   border-radius: 3px;
 }
-p{
-  
+
+p {
   font-size: 20px;
 }
-.inputs{
+
+.inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80vw;
 }
-.add-button{
+
+.add-button {
   align-self: flex-end;
-  padding:5px 10px;
+  padding: 5px 10px;
   font-size: 15px;
   box-shadow: 3px 3px 2px black;
   margin-right: 10%;
 }
-.remove{
+
+.remove {
   padding: 5px;
   font-size: 15px;
   box-shadow: 3px 3px 2px black;
 }
-.book-details{
+
+.book-details {
   padding: 10px;
   height: 30px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .book-details:nth-child(odd) {
   background-color: #f2f2f2;
 }
-.books-container{
+
+.books-container {
   border-radius: 2px;
   width: 100%;
 }
