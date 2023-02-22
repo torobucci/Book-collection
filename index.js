@@ -1,11 +1,24 @@
 const bookContainer = document.querySelector(".books-container");
 
+displayBook = function (book) {
+  bookContainer.insertAdjacentHTML(
+    "beforeend",
+    `<div class="book-details" id="book-${book.id}">
+        <p>"${book.title}" by ${book.author}</p> 
+        <button class="remove" type="button" id="remove-${book.id}">Remove</button>
+      </div>`
+  );
+}
+
 class BookCollection {
   constructor(bookArray) {
     this.bookArray = bookArray;
   }
   removeBook(book) {
+    console.log(this.bookArray)
     this.bookArray.splice(book, 1);
+    console.log(this.bookArray)
+
     localStorage.setItem(
       "bookCollectionArray",
       JSON.stringify(bookCollection.bookArray)
@@ -14,7 +27,7 @@ class BookCollection {
       book.id = i;
     });
     bookContainer.innerHTML = "";
-    this.bookArray.forEach((book) => book.displayBook());
+    this.bookArray.forEach((book) => displayBook(book));
     document
       .querySelector(`#remove-${book.id}`)
       ?.addEventListener(`click`, this.removeBook.bind(this, book));
@@ -25,23 +38,13 @@ class BookCollection {
       title: title,
       author: author,
       id: this.bookArray.length,
-
-      displayBook: function () {
-        bookContainer.insertAdjacentHTML(
-          "beforeend",
-          `<div class="book-details" id="book-${this.id}">
-              <p>"${this.title}" by ${this.author}</p> 
-              <button class="remove" type="button" id="remove-${this.id}">Remove</button>
-            </div>`
-        );
-      },
     });
     localStorage.setItem(
       "bookCollectionArray",
       JSON.stringify(bookCollection.bookArray)
     );
 
-    this.bookArray[this.bookArray.length - 1].displayBook();
+    displayBook(this.bookArray[this.bookArray.length - 1]);
     document
       .querySelector(`#remove-${this.bookArray[this.bookArray.length - 1].id}`)
       .addEventListener("click", () => {
@@ -53,7 +56,10 @@ class BookCollection {
 const bookCollection = localStorage.getItem("bookCollectionArray")
   ? new BookCollection(JSON.parse(localStorage.getItem("bookCollectionArray")))
   : new BookCollection([]);
-
+console.log(bookCollection)
+bookCollection.bookArray.forEach(book =>{
+  displayBook(book)
+})
 const addButton = document.querySelector(".add-button");
 const titleInput = document.querySelector("#title-input");
 const authorInput = document.querySelector("#author-input");
