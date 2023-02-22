@@ -8,16 +8,16 @@ displayBook = function (book) {
         <button class="remove" type="button" id="remove-${book.id}">Remove</button>
       </div>`
   );
-}
+};
 
 class BookCollection {
   constructor(bookArray) {
     this.bookArray = bookArray;
   }
   removeBook(book) {
-    console.log(this.bookArray)
+    console.log(this.bookArray);
     this.bookArray.splice(book, 1);
-    console.log(this.bookArray)
+    console.log(this.bookArray);
 
     localStorage.setItem(
       "bookCollectionArray",
@@ -31,6 +31,9 @@ class BookCollection {
     document
       .querySelector(`#remove-${book.id}`)
       ?.addEventListener(`click`, this.removeBook.bind(this, book));
+    this.bookArray[0]
+      ? (bookContainer.style.border = "solid 3px #000000")
+      : (bookContainer.style.border = "none");
   }
 
   addBook(title, author) {
@@ -50,16 +53,29 @@ class BookCollection {
       .addEventListener("click", () => {
         this.removeBook(this.bookArray[this.bookArray.length - 1]);
       });
+    this.bookArray[0]
+      ? (bookContainer.style.border = "solid 3px #000000")
+      : (bookContainer.style.border = "none");
   }
 }
 
 const bookCollection = localStorage.getItem("bookCollectionArray")
   ? new BookCollection(JSON.parse(localStorage.getItem("bookCollectionArray")))
   : new BookCollection([]);
-console.log(bookCollection)
-bookCollection.bookArray.forEach(book =>{
-  displayBook(book)
-})
+console.log(bookCollection);
+bookCollection.bookArray.forEach((book) => {
+  displayBook(book);
+  document
+    .querySelector(`#remove-${book.id}`)
+    ?.addEventListener(
+      `click`,
+      bookCollection.removeBook.bind(bookCollection, book)
+    );
+});
+bookCollection.bookArray[0]
+  ? (bookContainer.style.border = "solid 3px #000000")
+  : (bookContainer.style.border = "none");
+
 const addButton = document.querySelector(".add-button");
 const titleInput = document.querySelector("#title-input");
 const authorInput = document.querySelector("#author-input");
