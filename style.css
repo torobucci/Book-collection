@@ -56,3 +56,17 @@ p {
   border-radius: 2px;
   width: 100%;
 }
+nav{
+  display: flex;
+  border: 3px solid black;
+  padding:3px 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-ul{
+  display: flex;
+}
+.nav-ul li{
+  border-right:1px solid black ;
+}
+.
