@@ -1,4 +1,58 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 input {
+  width: 80%;
+  border: 2px solid black;
+  background-color: white;
+  padding: 5px;
+  font-size: 20px;
   display: block;
   margin-bottom: 20px;
+  border-radius: 3px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+}
+
+.add-button {
+  align-self: flex-end;
+  padding: 5px 10px;
+  font-size: 15px;
+  box-shadow: 3px 3px 2px black;
+  margin-right: 10%;
+}
+
+.remove {
+  padding: 5px;
+  font-size: 15px;
+  box-shadow: 3px 3px 2px black;
+}
+
+.book-details {
+  padding: 10px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-details:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.books-container {
+  border-radius: 2px;
+  width: 100%;
 }
