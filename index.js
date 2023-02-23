@@ -74,7 +74,9 @@ bookCollection.bookArray.forEach((book) => {
       );
   }
 });
-if (bookCollection.bookArray[0]) { bookContainer.style.border = 'solid 3px #000000'; } else bookContainer.style.border = 'none';
+if (bookCollection.bookArray[0]) {
+  bookContainer.style.border = 'solid 3px #000000';
+} else bookContainer.style.border = 'none';
 
 const addButton = document.querySelector('.add-button');
 const titleInput = document.querySelector('#title-input');
@@ -84,5 +86,21 @@ addButton.addEventListener('click', () => {
     bookCollection.addBook(titleInput.value, authorInput.value);
     titleInput.value = '';
     authorInput.value = '';
+  }
+});
+
+document.querySelectorAll('.section').forEach((section) => {
+  if (!(section.id === 'book-list')) section.style.display = 'none';
+});
+
+const navBar = document.querySelector('.nav-Bar');
+navBar.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains('nav-link')) {
+    const anchorHref = e.target.href.split('#')[1];
+    document.querySelectorAll('.section').forEach((section) => {
+      if (section.id === anchorHref) section.style.display = 'flex';
+      else section.style.display = 'none';
+    });
   }
 });
