@@ -63,7 +63,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://torobucci.github.io/Book-collection/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,9 +125,9 @@ npx stylelint "**/*.{css,scss}"
 
 👤 **Author2**
 
-- GitHub: [@githubhandle](https://github.com/Tshobohwa)
-- Twitter: [@twitterhandle](https://twitter.com/SalomonTshoboh1)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tshobohwa-salomon-4bb457245/)
+- GitHub: [@Tshobohwa](https://github.com/Tshobohwa)
+- Twitter: [@SalomonTshoboh1](https://twitter.com/SalomonTshoboh1)
+- LinkedIn: [@Tshobohwa Salomon](https://www.linkedin.com/in/tshobohwa-salomon-4bb457245/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
