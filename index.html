@@ -10,15 +10,41 @@
 </head>
 
 <body class="body">
-    <h1>Awesome Books</h1>
-    <div class="books-container"></div>
-    <div class="inputs">
-        <hr>
-        <h1>Add new book</h1>
-        <input type="text" placeholder="title" id="title-input">
-        <input type="text" placeholder="Author" id="author-input">
-        <button class="add-button" type="button">Add</button>
-    </div>
+    <header>
+        <nav class="nav-Bar">
+            <p>Awesomebooks</p>
+            <ul class="nav-ul">
+                <li><a class="nav-link" href="#book-list">List</a></li>
+                <li><a class="nav-link" href="#add-book">Add book</a></li>
+                <li><a class="nav-link" href="#contact-info">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="book-list" class="section">
+        <h1>Awesome Books</h1>
+        <div class="books-container"></div>
+    </section>
+    <section id="add-book" class="section">
+        <div class="inputs">
+            <hr>
+            <h1>Add new book</h1>
+            <input type="text" placeholder="title" id="title-input">
+            <input type="text" placeholder="Author" id="author-input">
+            <button class="add-button" type="button">Add</button>
+        </div>
+    </section>
+    <section id="contact-info" class="section">
+        <h2>Contact Information</h2>
+        <p>Do you have any questions? You can reach us out at:</p>
+        <ul>
+            <li>Email</li>
+            <li>Phone no</li>
+            <li>Location</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy;Awesomebooks</p>
+    </footer>
     <script src="index.js"></script>
 </body>
 
